@@ -1,0 +1,25 @@
+server:
+  port: "8080"
+database:
+  host: "127.0.0.1"
+  port: 3306
+  username: "test_user"
+  password: "test_pass"
+  name: "test_db"
+  max_idle: 10
+  max_open: 100
+redis:
+  host: "127.0.0.1"
+  port: 6379
+  password: ""
+  db: 0
+jwt:
+  secret: "your_secret_key"
+
+# 配置生成哪些表
+tables:
+  - test_tbl
+
+# MySQL连接信息
+mysql:
+  dsn: "test_user:test_pass@tcp(127.0.0.1:3306)/test_db?charset=utf8mb4&parseTime=True&loc=Local"

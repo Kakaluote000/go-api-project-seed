@@ -1,0 +1,5 @@
+Swagger 文档：http://localhost:8080/swagger/index.html
+
+go install github.com/swaggo/swag/cmd/swag@latest
+
+swag init --parseDependency --parseInternal --output ./docs/swagger --generalInfo ./main.go

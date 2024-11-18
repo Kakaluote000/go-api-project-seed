@@ -1,0 +1,45 @@
+package repository
+
+import (
+	"{{.ProjectName}}/internal/model"
+	"gorm.io/gorm"
+)
+
+// {{.StructName}}Repository handles database operations for {{.StructName}}.
+type {{.StructName}}Repository struct {
+	db *gorm.DB
+}
+
+// New{{.StructName}}Repository initializes a new instance of {{.StructName}}Repository.
+func New{{.StructName}}Repository(db *gorm.DB) *{{.StructName}}Repository {
+	return &{{.StructName}}Repository{db: db}
+}
+
+// FindAll retrieves all records.
+func (r *{{.StructName}}Repository) FindAll() ([]model.{{.StructName}}, error) {
+	var entities []model.{{.StructName}}
+	err := r.db.Find(&entities).Error
+	return entities, err
+}
+
+// FindByID retrieves a record by ID.
+func (r *{{.StructName}}Repository) FindByID(id uint) (*model.{{.StructName}}, error) {
+	var entity model.{{.StructName}}
+	err := r.db.First(&entity, id).Error
+	return &entity, err
+}
+
+// Create adds a new record.
+func (r *{{.StructName}}Repository) Create(entity *model.{{.StructName}}) error {
+	return r.db.Create(entity).Error
+}
+
+// Update modifies an existing record.
+func (r *{{.StructName}}Repository) Update(entity *model.{{.StructName}}) error {
+	return r.db.Save(entity).Error
+}
+
+// Delete removes a record by ID.
+func (r *{{.StructName}}Repository) Delete(id uint) error {
+	return r.db.Delete(&model.{{.StructName}}{}, id).Error
+}

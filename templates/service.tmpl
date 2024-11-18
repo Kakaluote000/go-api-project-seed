@@ -1,0 +1,41 @@
+package service
+
+import (
+	"{{.ProjectName}}/internal/model"
+	"{{.ProjectName}}/internal/repository"
+)
+
+// {{.StructName}}Service handles business logic for {{.StructName}}.
+type {{.StructName}}Service struct {
+	repo *repository.{{.StructName}}Repository
+}
+
+// New{{.StructName}}Service initializes a new instance of {{.StructName}}Service.
+func New{{.StructName}}Service(repo *repository.{{.StructName}}Repository) *{{.StructName}}Service {
+	return &{{.StructName}}Service{repo: repo}
+}
+
+// GetAll retrieves all entries.
+func (s *{{.StructName}}Service) GetAll() ([]model.{{.StructName}}, error) {
+	return s.repo.FindAll()
+}
+
+// GetByID retrieves an entry by ID.
+func (s *{{.StructName}}Service) GetByID(id uint) (*model.{{.StructName}}, error) {
+	return s.repo.FindByID(id)
+}
+
+// Create adds a new entry.
+func (s *{{.StructName}}Service) Create(entity *model.{{.StructName}}) error {
+	return s.repo.Create(entity)
+}
+
+// Update modifies an existing entry.
+func (s *{{.StructName}}Service) Update(entity *model.{{.StructName}}) error {
+	return s.repo.Update(entity)
+}
+
+// Delete removes an existing entry.
+func (s *{{.StructName}}Service) Delete(id uint) error {
+	return s.repo.Delete(id)
+}

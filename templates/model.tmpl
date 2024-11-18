@@ -1,0 +1,10 @@
+package model
+
+import "gorm.io/gorm"
+
+// {{.StructName}} represents the "{{.TableName}}" table.
+type {{.StructName}} struct {
+{{- range .Columns }}
+	{{ .Field | pascalCase }} {{ .Type | goType }} `gorm:"column:{{ .Field }}" json:"{{ .Field | toSnakeCase }}"` // {{ .Field }}
+{{- end }}
+}
